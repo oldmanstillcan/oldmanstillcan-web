@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OLDMANSTILLCAN</title>
+  <meta name="description" content="Life is movement. Stillness is death. Age is not a reason to stop." />
+  <meta property="og:title" content="OLDMANSTILLCAN" />
+  <meta property="og:description" content="Life is movement. Stillness is death." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://oldmanstillcan.com" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: #0a0a0a;
+      color: #e8e8e8;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .brand-name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .brand-name span {
+      color: #c0392b;
+    }
+
+    .maxim {
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888888;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #666666;
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background-color: #c0392b;
+      margin: 0 auto;
+    }
+
+    /* ── Aces ── */
+    .aces {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .aces-title {
+      text-align: center;
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888888;
+      margin-bottom: 3rem;
+    }
+
+    .aces-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .ace-card {
+      border: 1px solid #1a1a1a;
+      padding: 2rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .ace-card:hover {
+      border-color: #c0392b;
+    }
+
+    .ace-suit {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .ace-name {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+    }
+
+    .ace-commandments {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .ace-commandments li {
+      font-size: 0.8rem;
+      color: #999999;
+      line-height: 1.8;
+      padding-left: 0.5rem;
+    }
+
+    .ace-line {
+      font-size: 0.85rem;
+      color: #c0392b;
+      font-style: italic;
+    }
+
+    /* ── Belief ── */
+    .belief {
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .belief-text {
+      font-size: 1rem;
+      color: #888888;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .belief-quote {
+      font-size: 1.1rem;
+      color: #ffffff;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .belief-rule {
+      font-size: 0.8rem;
+      color: #555555;
+      letter-spacing: 0.15em;
+    }
+
+    /* ── Content ── */
+    .content-section {
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-title {
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888888;
+      margin-bottom: 2rem;
+    }
+
+    .content-quote {
+      font-size: 0.95rem;
+      color: #cccccc;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+      border-left: 2px solid #c0392b;
+      text-align: left;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .cta-link {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 1px solid #c0392b;
+      color: #c0392b;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      margin: 0 0.5rem;
+    }
+
+    .cta-link:hover {
+      background-color: #c0392b;
+      color: #0a0a0a;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .signoff {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #555555;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: #333333;
+      text-transform: uppercase;
+    }
+
+    .footer-links a {
+      color: #333333;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #c0392b;
+    }
+
+    @media (max-width: 600px) {
+      .brand-name {
+        font-size: 1.8rem;
+      }
+      .aces-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1 class="brand-name">Old Man <span>Still</span> Can</h1>
+    <p class="maxim">Life is movement. Stillness is death.</p>
+    <p class="subtitle">A brand for people who refuse to quit. Not inspirational content. Not motivational posters. Just the honest account of someone still in it.</p>
+    <div class="divider"></div>
+  </section>
+
+  <!-- 4 Aces -->
+  <section class="aces">
+    <h2 class="aces-title">The 4 Aces</h2>
+    <div class="aces-grid">
+
+      <div class="ace-card">
+        <div class="ace-suit">&clubs;</div>
+        <h3 class="ace-name">Movement</h3>
+        <ul class="ace-commandments">
+          <li>Thou shalt not commit stillness.</li>
+          <li>Thou shalt maintain a state of readiness.</li>
+        </ul>
+        <p class="ace-line">Life is movement.</p>
+      </div>
+
+      <div class="ace-card">
+        <div class="ace-suit">&diams;</div>
+        <h3 class="ace-name">Discipline</h3>
+        <ul class="ace-commandments">
+          <li>Thou shalt pursue discipline, not excuses.</li>
+          <li>Thou shalt not skip leg day.</li>
+          <li>Thou shalt not skip thy morning caffeine.</li>
+        </ul>
+        <p class="ace-line">Rise. Grind. Shine.</p>
+      </div>
+
+      <div class="ace-card">
+        <div class="ace-suit">&spades;</div>
+        <h3 class="ace-name">Resilience</h3>
+        <ul class="ace-commandments">
+          <li>Thou shalt endure setbacks and doubt.</li>
+          <li>Thou shalt honor the war within.</li>
+        </ul>
+        <p class="ace-line">Higher consciousness through harder contact.</p>
+      </div>
+
+      <div class="ace-card">
+        <div class="ace-suit">&hearts;</div>
+        <h3 class="ace-name">Transformation</h3>
+        <ul class="ace-commandments">
+          <li>Thou shalt turn scars into strength.</li>
+          <li>Thou shalt not let age define thy limits.</li>
+          <li>Thou shalt lift others as thyself.</li>
+        </ul>
+        <p class="ace-line">It's not the blood you spill. It's the blood you share.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Belief -->
+  <section class="belief">
+    <div class="divider" style="margin-bottom: 3rem;"></div>
+    <p class="belief-quote">"Age is not a reason to stop. Not for training. Not for competing. Not for learning. Not for building. Not for anything."</p>
+    <p class="belief-rule">Apply the OMSC-GISTICS through self-leadership, not self-bullying.</p>
+  </section>
+
+  <!-- Voice -->
+  <section class="content-section">
+    <h2 class="content-title">The Voice</h2>
+    <p class="content-quote">Didn't feel like training today. Trained anyway. That's the whole system.</p>
+    <p class="content-quote">The industry stopped talking to you at 40. The work didn't.</p>
+    <p class="content-quote">Your fire doesn't need to be loud. It needs to stay lit.</p>
+    <p class="content-quote">If Monday scares you, your purpose ain't big enough.</p>
+    <p class="content-quote">In the space between what happens and what you choose to do next — that's where your power lives. Master the gap.</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <a class="cta-link" href="https://twitter.com/oldmanstillcan" target="_blank" rel="noopener noreferrer">
+      Follow @oldmanstillcan
+    </a>
+    <a class="cta-link" href="https://aoktshirts.com" target="_blank" rel="noopener noreferrer">
+      Shop AOK
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <section class="footer">
+    <p class="signoff">Stay in Mosciun.</p>
+    <p class="footer-links">
+      <a href="https://oldmanstillcan.com">oldmanstillcan.com</a> &nbsp;&middot;&nbsp;
+      <a href="https://aoktshirts.com">AOK T-Shirts</a> &nbsp;&middot;&nbsp;
+      <a href="https://taoerwreckords.com">Taoer Wreckords</a>
+    </p>
+  </section>
+
+</body>
+</html>
