@@ -9,7 +9,20 @@
   <meta property="og:description" content="Life is movement. Stillness is death." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://oldmanstillcan.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --omsc-blood:     #CC1A1A;
+      --omsc-black:     #0A0A0A;
+      --omsc-bone:      #F0EEEB;
+      --omsc-iron:      #1A1A1A;
+      --omsc-ash:       #6B6560;
+      --omsc-ember:     #8B3A2A;
+      --omsc-gold:      #C9A84C;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -18,8 +31,8 @@
 
     html, body {
       height: 100%;
-      background-color: #0a0a0a;
-      color: #e8e8e8;
+      background-color: var(--omsc-black);
+      color: var(--omsc-bone);
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
 
@@ -40,29 +53,30 @@
     }
 
     .brand-name {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
       color: #ffffff;
     }
 
     .brand-name span {
-      color: #c0392b;
+      color: var(--omsc-blood);
     }
 
     .maxim {
       font-size: 1.1rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #888888;
+      color: var(--omsc-ash);
       margin-bottom: 1rem;
     }
 
     .subtitle {
       font-size: 0.9rem;
-      color: #666666;
+      color: var(--omsc-ash);
       max-width: 500px;
       line-height: 1.6;
       margin-bottom: 3rem;
@@ -70,8 +84,8 @@
 
     .divider {
       width: 40px;
-      height: 1px;
-      background-color: #c0392b;
+      height: 2px;
+      background-color: var(--omsc-blood);
       margin: 0 auto;
     }
 
@@ -83,11 +97,12 @@
     }
 
     .aces-title {
+      font-family: 'Bebas Neue', sans-serif;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #888888;
+      color: var(--omsc-ash);
       margin-bottom: 3rem;
     }
 
@@ -98,23 +113,25 @@
     }
 
     .ace-card {
-      border: 1px solid #1a1a1a;
+      border: 1px solid var(--omsc-iron);
       padding: 2rem;
       transition: border-color 0.2s ease;
     }
 
     .ace-card:hover {
-      border-color: #c0392b;
+      border-color: var(--omsc-blood);
     }
 
     .ace-suit {
       font-size: 2rem;
       margin-bottom: 0.5rem;
+      color: var(--omsc-blood);
     }
 
     .ace-name {
-      font-size: 1rem;
-      font-weight: 700;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: #ffffff;
@@ -129,14 +146,14 @@
 
     .ace-commandments li {
       font-size: 0.8rem;
-      color: #999999;
+      color: var(--omsc-ash);
       line-height: 1.8;
       padding-left: 0.5rem;
     }
 
     .ace-line {
       font-size: 0.85rem;
-      color: #c0392b;
+      color: var(--omsc-blood);
       font-style: italic;
     }
 
@@ -148,23 +165,17 @@
       margin: 0 auto;
     }
 
-    .belief-text {
-      font-size: 1rem;
-      color: #888888;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-
     .belief-quote {
       font-size: 1.1rem;
       color: #ffffff;
       font-style: italic;
       margin-bottom: 1rem;
+      line-height: 1.6;
     }
 
     .belief-rule {
       font-size: 0.8rem;
-      color: #555555;
+      color: var(--omsc-ash);
       letter-spacing: 0.15em;
     }
 
@@ -177,10 +188,11 @@
     }
 
     .content-title {
-      font-size: 1rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #888888;
+      color: var(--omsc-ash);
       margin-bottom: 2rem;
     }
 
@@ -190,7 +202,7 @@
       line-height: 1.8;
       margin-bottom: 1.5rem;
       padding: 0 1rem;
-      border-left: 2px solid #c0392b;
+      border-left: 2px solid var(--omsc-blood);
       text-align: left;
     }
 
@@ -203,10 +215,11 @@
     .cta-link {
       display: inline-block;
       padding: 0.75rem 2rem;
-      border: 1px solid #c0392b;
-      color: #c0392b;
+      border: 1px solid var(--omsc-blood);
+      color: var(--omsc-blood);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       transition: all 0.2s ease;
@@ -214,21 +227,23 @@
     }
 
     .cta-link:hover {
-      background-color: #c0392b;
-      color: #0a0a0a;
+      background-color: var(--omsc-blood);
+      color: var(--omsc-black);
     }
 
     /* ── Footer ── */
     .footer {
       padding: 3rem 2rem;
       text-align: center;
+      margin-top: auto;
     }
 
     .signoff {
-      font-size: 0.85rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: #555555;
+      color: var(--omsc-ash);
       font-style: italic;
       margin-bottom: 1.5rem;
     }
@@ -236,22 +251,22 @@
     .footer-links {
       font-size: 0.65rem;
       letter-spacing: 0.15em;
-      color: #333333;
+      color: var(--omsc-ash);
       text-transform: uppercase;
     }
 
     .footer-links a {
-      color: #333333;
+      color: var(--omsc-ash);
       text-decoration: none;
     }
 
     .footer-links a:hover {
-      color: #c0392b;
+      color: var(--omsc-blood);
     }
 
     @media (max-width: 600px) {
       .brand-name {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
       }
       .aces-grid {
         grid-template-columns: 1fr;
