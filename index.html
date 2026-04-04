@@ -4,22 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OLDMANSTILLCAN</title>
-  <meta name="description" content="Life is movement. Stillness is death. Age is not a reason to stop." />
+  <meta name="description" content="Life is movement. Stillness is death. A longevity lifestyle brand for people who refuse to quit." />
   <meta property="og:title" content="OLDMANSTILLCAN" />
-  <meta property="og:description" content="Life is movement. Stillness is death." />
+  <meta property="og:description" content="Life is movement. Stillness is death. Train For Life." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://oldmanstillcan.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --omsc-blood:     #CC1A1A;
       --omsc-black:     #0A0A0A;
-      --omsc-bone:      #F0EEEB;
+      --omsc-coal:      #0A0A0A;
       --omsc-iron:      #1A1A1A;
+      --omsc-steel:     #2A2A2A;
+      --omsc-chalk:     #F0EEEB;
       --omsc-ash:       #6B6560;
-      --omsc-ember:     #8B3A2A;
+      --omsc-ember:     #E84430;
+      --omsc-bone:      #D4CFC8;
+      --omsc-rust:      #8B3A2A;
+      --omsc-smoke:     #3A3632;
       --omsc-gold:      #C9A84C;
     }
 
@@ -29,17 +34,128 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
     html, body {
       height: 100%;
-      background-color: var(--omsc-black);
-      color: var(--omsc-bone);
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: var(--omsc-coal);
+      color: var(--omsc-chalk);
+      font-family: 'Barlow', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 400;
     }
 
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      position: relative;
+    }
+
+    /* ── Noise/Grain Overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--omsc-iron);
+      transition: padding 0.3s ease, background 0.3s ease;
+    }
+
+    .nav.scrolled {
+      padding: 0.625rem 2.5rem;
+      background: rgba(10,10,10,0.97);
+    }
+
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.15em;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-brand:hover {
+      opacity: 0.8;
+    }
+
+    .nav-brand span {
+      color: var(--omsc-blood);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--omsc-ash);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--omsc-blood);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--omsc-chalk);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     /* ── Hero ── */
@@ -48,18 +164,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 6rem 2rem 4rem;
+      padding: 0 2rem;
       text-align: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--omsc-steel));
     }
 
     .brand-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 3.5rem;
+      font-size: 7rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       color: #ffffff;
+      line-height: 0.95;
     }
 
     .brand-name span {
@@ -67,70 +197,147 @@
     }
 
     .maxim {
-      font-size: 1.1rem;
-      letter-spacing: 0.15em;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--omsc-ash);
-      margin-bottom: 1rem;
+      margin-bottom: 2.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .rotating-quote {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--omsc-bone);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      min-height: 3em;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+      font-style: italic;
+    }
+
+    .rotating-quote.fade-out {
+      opacity: 0;
     }
 
     .subtitle {
       font-size: 0.9rem;
       color: var(--omsc-ash);
-      max-width: 500px;
-      line-height: 1.6;
+      max-width: 480px;
+      line-height: 1.7;
       margin-bottom: 3rem;
     }
 
-    .divider {
+    .hero-divider {
+      width: 48px;
+      height: 2px;
+      background-color: var(--omsc-blood);
+    }
+
+    /* ── Section Common ── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--omsc-blood);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--omsc-chalk);
+      line-height: 1;
+    }
+
+    .section-rule {
       width: 40px;
       height: 2px;
       background-color: var(--omsc-blood);
-      margin: 0 auto;
+      margin: 1.5rem auto 0;
     }
 
     /* ── Aces ── */
     .aces {
-      padding: 4rem 2rem;
-      max-width: 900px;
+      padding: 8rem 2rem;
+      max-width: 960px;
       margin: 0 auto;
-    }
-
-    .aces-title {
-      font-family: 'Bebas Neue', sans-serif;
-      text-align: center;
-      font-size: 1.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--omsc-ash);
-      margin-bottom: 3rem;
     }
 
     .aces-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .ace-card {
-      border: 1px solid var(--omsc-iron);
-      padding: 2rem;
-      transition: border-color 0.2s ease;
+      background: var(--omsc-iron);
+      border: 1px solid var(--omsc-steel);
+      border-radius: 4px;
+      padding: 2rem 2rem 1.75rem;
+      position: relative;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .ace-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      transition: height 0.4s ease;
     }
 
     .ace-card:hover {
-      border-color: var(--omsc-blood);
+      border-color: var(--omsc-steel);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
 
-    .ace-suit {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: var(--omsc-blood);
+    .ace-card:hover::before {
+      height: 100%;
     }
+
+    /* Suit-specific accent colors */
+    .ace-card--clubs::before { background: var(--omsc-chalk); }
+    .ace-card--clubs:hover { border-color: rgba(240,238,235,0.2); }
+    .ace-card--diamonds::before { background: var(--omsc-blood); }
+    .ace-card--diamonds:hover { border-color: rgba(204,26,26,0.3); }
+    .ace-card--spades::before { background: var(--omsc-bone); }
+    .ace-card--spades:hover { border-color: rgba(212,207,200,0.2); }
+    .ace-card--hearts::before { background: var(--omsc-ember); }
+    .ace-card--hearts:hover { border-color: rgba(232,68,48,0.3); }
+
+    .ace-suit {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    .ace-card--clubs .ace-suit { color: var(--omsc-chalk); }
+    .ace-card--diamonds .ace-suit { color: var(--omsc-blood); }
+    .ace-card--spades .ace-suit { color: var(--omsc-bone); }
+    .ace-card--hearts .ace-suit { color: var(--omsc-ember); }
 
     .ace-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.35rem;
       font-weight: 400;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -141,14 +348,26 @@
     .ace-commandments {
       list-style: none;
       padding: 0;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     .ace-commandments li {
-      font-size: 0.8rem;
-      color: var(--omsc-ash);
-      line-height: 1.8;
-      padding-left: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--omsc-bone);
+      line-height: 1.9;
+      padding-left: 0.75rem;
+      position: relative;
+    }
+
+    .ace-commandments li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 3px;
+      height: 3px;
+      background: var(--omsc-ash);
+      border-radius: 0;
     }
 
     .ace-line {
@@ -157,64 +376,498 @@
       font-style: italic;
     }
 
-    /* ── Belief ── */
+    /* ── Belief (full-width break) ── */
     .belief {
-      padding: 4rem 2rem;
+      padding: 6rem 2rem;
       text-align: center;
-      max-width: 600px;
+      max-width: 640px;
       margin: 0 auto;
+      position: relative;
+    }
+
+    .belief::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: var(--omsc-blood);
     }
 
     .belief-quote {
-      font-size: 1.1rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 400;
       color: #ffffff;
       font-style: italic;
-      margin-bottom: 1rem;
-      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      line-height: 1.75;
     }
 
     .belief-rule {
-      font-size: 0.8rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
       color: var(--omsc-ash);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
     }
 
-    /* ── Content ── */
-    .content-section {
-      padding: 4rem 2rem;
-      text-align: center;
+    /* ── Voice ── */
+    .voice-section {
+      padding: 6rem 2rem 8rem;
       max-width: 700px;
       margin: 0 auto;
     }
 
-    .content-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--omsc-ash);
-      margin-bottom: 2rem;
+    .voice-quote {
+      font-size: 0.95rem;
+      color: var(--omsc-chalk);
+      line-height: 1.8;
+      margin-bottom: 0;
+      padding: 1.25rem 1.75rem;
+      border-left: 2px solid var(--omsc-steel);
+      text-align: left;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      position: relative;
     }
 
-    .content-quote {
-      font-size: 0.95rem;
-      color: #cccccc;
-      line-height: 1.8;
+    .voice-quote:hover {
+      border-left-color: var(--omsc-blood);
+      background: rgba(26,26,26,0.5);
+    }
+
+    .voice-quote + .voice-quote {
+      margin-top: 0.5rem;
+    }
+
+    /* ── About / Origin ── */
+    .about {
+      padding: 8rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-intro {
+      font-size: 1.05rem;
+      color: var(--omsc-chalk);
+      line-height: 1.85;
+      margin-bottom: 3rem;
+      text-align: center;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .about-card {
+      background: var(--omsc-iron);
+      border: 1px solid var(--omsc-steel);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .about-card:hover {
+      border-color: var(--omsc-smoke);
+    }
+
+    .about-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--omsc-blood);
+      margin-bottom: 0.75rem;
+    }
+
+    .about-card p, .about-card li {
+      font-size: 0.9rem;
+      color: var(--omsc-bone);
+      line-height: 1.75;
+    }
+
+    .about-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-card li {
+      padding: 0.25rem 0;
+      padding-left: 0.75rem;
+      position: relative;
+    }
+
+    .about-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 3px;
+      height: 3px;
+      background: var(--omsc-rust);
+    }
+
+    .origin-block {
+      border-left: 2px solid var(--omsc-rust);
+      padding: 1.5rem 2rem;
       margin-bottom: 1.5rem;
-      padding: 0 1rem;
-      border-left: 2px solid var(--omsc-blood);
+      background: rgba(26,26,26,0.4);
+      border-radius: 0 4px 4px 0;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .origin-block:hover {
+      border-left-color: var(--omsc-blood);
+      background: rgba(26,26,26,0.7);
+    }
+
+    .origin-block p {
+      font-size: 0.9rem;
+      color: var(--omsc-bone);
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+    }
+
+    .origin-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .origin-block strong {
+      color: var(--omsc-chalk);
+    }
+
+    .origin-note {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--omsc-ash);
+      text-align: center;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 3rem;
+    }
+
+    /* ── Philosophy ── */
+    .philosophy {
+      padding: 8rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .framework-block {
+      background: var(--omsc-iron);
+      border: 1px solid var(--omsc-steel);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+
+    .framework-block--full {
+      grid-column: 1 / -1;
+    }
+
+    .framework-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .framework-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--omsc-blood);
+      margin-bottom: 1rem;
+    }
+
+    .framework-desc {
+      font-size: 0.9rem;
+      color: var(--omsc-bone);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .framework-desc:last-child {
+      margin-bottom: 0;
+    }
+
+    .framework-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .framework-table th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--omsc-ash);
       text-align: left;
+      padding: 0.5rem 1rem 0.5rem 0;
+      border-bottom: 1px solid var(--omsc-steel);
+    }
+
+    .framework-table td {
+      font-size: 0.85rem;
+      color: var(--omsc-bone);
+      padding: 0.65rem 1rem 0.65rem 0;
+      border-bottom: 1px solid rgba(42,42,42,0.5);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .framework-table td:first-child {
+      color: var(--omsc-blood);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      width: 48px;
+    }
+
+    .philosophy-pullquote {
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--omsc-chalk);
+      font-style: italic;
+      line-height: 1.75;
+      max-width: 560px;
+      margin: 0 auto 4rem;
+      padding: 2.5rem 0;
+      position: relative;
+    }
+
+    .philosophy-pullquote::before,
+    .philosophy-pullquote::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 1px;
+      background: var(--omsc-rust);
+    }
+
+    .philosophy-pullquote::before {
+      top: 0;
+    }
+
+    .philosophy-pullquote::after {
+      bottom: 0;
+    }
+
+    /* Laws section */
+    .laws-section {
+      margin-bottom: 4rem;
+    }
+
+    .laws-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .laws-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .law-block {
+      padding: 1.5rem;
+      border-left: 2px solid var(--omsc-steel);
+      transition: border-color 0.3s ease;
+    }
+
+    .law-block:hover {
+      border-left-color: var(--omsc-blood);
+    }
+
+    .law-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--omsc-blood);
+      margin-bottom: 0.25rem;
+    }
+
+    .law-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .law-desc {
+      font-size: 0.85rem;
+      color: var(--omsc-bone);
+      line-height: 1.75;
+    }
+
+    /* Bottom philosophy blocks */
+    .philosophy-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .philosophy-bottom .framework-block {
+      background: transparent;
+      border: 1px solid var(--omsc-steel);
+      border-left: 2px solid var(--omsc-blood);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .philosophy-closer {
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    /* ── Products ── */
+    .products {
+      padding: 8rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .product-card {
+      background: var(--omsc-iron);
+      border: 1px solid var(--omsc-steel);
+      border-radius: 4px;
+      padding: 2.5rem 1.75rem 2rem;
+      text-align: center;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      border-color: var(--omsc-smoke);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .product-icon {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+      color: var(--omsc-blood);
+    }
+
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-desc {
+      font-size: 0.8rem;
+      color: var(--omsc-ash);
+      line-height: 1.65;
+    }
+
+    .product-status {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.3rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .status-live {
+      color: var(--omsc-blood);
+      border: 1px solid var(--omsc-blood);
+    }
+
+    .status-building {
+      color: var(--omsc-ash);
+      border: 1px solid var(--omsc-steel);
+    }
+
+    .franchise-block {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--omsc-steel);
+      border-radius: 4px;
+      background: var(--omsc-iron);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .franchise-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--omsc-blood);
+    }
+
+    .franchise-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .franchise-desc {
+      font-size: 0.9rem;
+      color: var(--omsc-bone);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
     }
 
     /* ── CTA ── */
     .cta {
-      padding: 4rem 2rem;
+      padding: 4rem 2rem 6rem;
       text-align: center;
     }
 
     .cta-link {
       display: inline-block;
-      padding: 0.75rem 2rem;
+      padding: 0.875rem 2.25rem;
       border: 1px solid var(--omsc-blood);
       color: var(--omsc-blood);
       text-decoration: none;
@@ -222,74 +875,167 @@
       font-size: 1rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       margin: 0 0.5rem;
+      border-radius: 2px;
+      position: relative;
     }
 
     .cta-link:hover {
       background-color: var(--omsc-blood);
-      color: var(--omsc-black);
+      color: var(--omsc-coal);
     }
 
     /* ── Footer ── */
     .footer {
-      padding: 3rem 2rem;
+      padding: 4rem 2rem 3rem;
       text-align: center;
       margin-top: auto;
+      border-top: 1px solid var(--omsc-iron);
+      position: relative;
     }
 
-    .signoff {
+    .footer-brand {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--omsc-ash);
-      font-style: italic;
+      font-size: 1.75rem;
+      letter-spacing: 0.15em;
+      color: var(--omsc-steel);
       margin-bottom: 1.5rem;
     }
 
+    .footer-brand span {
+      color: var(--omsc-rust);
+    }
+
+    .signoff {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--omsc-ash);
+      margin-bottom: 2rem;
+    }
+
     .footer-links {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
       font-size: 0.65rem;
       letter-spacing: 0.15em;
-      color: var(--omsc-ash);
+      color: var(--omsc-smoke);
       text-transform: uppercase;
     }
 
     .footer-links a {
-      color: var(--omsc-ash);
+      color: var(--omsc-smoke);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .footer-links a:hover {
       color: var(--omsc-blood);
     }
 
-    @media (max-width: 600px) {
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--omsc-steel);
+      margin-top: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
       .brand-name {
-        font-size: 2.2rem;
+        font-size: 3.5rem;
+        letter-spacing: 0.12em;
+      }
+      .hero {
+        padding: 0 1.5rem;
       }
       .aces-grid {
         grid-template-columns: 1fr;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      .philosophy-grid {
+        grid-template-columns: 1fr;
+      }
+      .laws-grid {
+        grid-template-columns: 1fr;
+      }
+      .philosophy-bottom {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      .nav-links a {
+        font-size: 0.6rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .aces, .about, .philosophy, .products {
+        padding: 5rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-name {
+        font-size: 2.5rem;
+      }
+      .nav {
+        padding: 0.75rem 1rem;
+      }
+      .nav.scrolled {
+        padding: 0.5rem 1rem;
+      }
+      .nav-brand {
+        font-size: 1rem;
+      }
+      .maxim {
+        font-size: 0.9rem;
+        letter-spacing: 0.15em;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-brand">OLDMAN<span>STILL</span>CAN</a>
+    <ul class="nav-links">
+      <li><a href="#aces">The Code</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#products">Build</a></li>
+    </ul>
+  </nav>
+
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <h1 class="brand-name">OLDMAN<span>STILL</span>CAN</h1>
     <p class="maxim">Life is movement. Stillness is death.</p>
+    <p class="rotating-quote" id="rotating-quote">Didn't feel like training today. Trained anyway. That's the whole system.</p>
     <p class="subtitle">A brand for people who refuse to quit. Not inspirational content. Not motivational posters. Just the honest account of someone still in it.</p>
-    <div class="divider"></div>
+    <div class="hero-divider"></div>
   </section>
 
   <!-- 4 Aces -->
-  <section class="aces">
-    <h2 class="aces-title">The 4 Aces</h2>
+  <section class="aces" id="aces">
+    <div class="section-header reveal">
+      <span class="section-label">The Code</span>
+      <h2 class="section-title">The Four Aces</h2>
+      <div class="section-rule"></div>
+    </div>
     <div class="aces-grid">
 
-      <div class="ace-card">
+      <div class="ace-card ace-card--clubs reveal">
         <div class="ace-suit">&clubs;</div>
         <h3 class="ace-name">Movement</h3>
         <ul class="ace-commandments">
@@ -299,7 +1045,7 @@
         <p class="ace-line">Life is movement.</p>
       </div>
 
-      <div class="ace-card">
+      <div class="ace-card ace-card--diamonds reveal">
         <div class="ace-suit">&diams;</div>
         <h3 class="ace-name">Discipline</h3>
         <ul class="ace-commandments">
@@ -310,7 +1056,7 @@
         <p class="ace-line">Rise. Grind. Shine.</p>
       </div>
 
-      <div class="ace-card">
+      <div class="ace-card ace-card--spades reveal">
         <div class="ace-suit">&spades;</div>
         <h3 class="ace-name">Resilience</h3>
         <ul class="ace-commandments">
@@ -320,7 +1066,7 @@
         <p class="ace-line">"Higher consciousness through harder contact." — Marc Denny, Dog Brothers</p>
       </div>
 
-      <div class="ace-card">
+      <div class="ace-card ace-card--hearts reveal">
         <div class="ace-suit">&hearts;</div>
         <h3 class="ace-name">Transformation</h3>
         <ul class="ace-commandments">
@@ -335,24 +1081,197 @@
   </section>
 
   <!-- Belief -->
-  <section class="belief">
-    <div class="divider" style="margin-bottom: 3rem;"></div>
+  <section class="belief reveal">
     <p class="belief-quote">"Age is not a reason to stop. Not for training. Not for competing. Not for learning. Not for building. Not for anything."</p>
     <p class="belief-rule">Apply the OMSC-GISTICS through self-leadership, not self-bullying.</p>
   </section>
 
   <!-- Voice -->
-  <section class="content-section">
-    <h2 class="content-title">The Voice</h2>
-    <p class="content-quote">Didn't feel like training today. Trained anyway. That's the whole system.</p>
-    <p class="content-quote">The industry stopped talking to you at 40. The work didn't.</p>
-    <p class="content-quote">Your fire doesn't need to be loud. It needs to stay lit.</p>
-    <p class="content-quote">If Monday scares you, your purpose ain't big enough.</p>
-    <p class="content-quote">In the space between what happens and what you choose to do next — that's where your power lives. Master the gap.</p>
+  <section class="voice-section">
+    <div class="section-header reveal">
+      <span class="section-label">Raw. Honest. Earned.</span>
+      <h2 class="section-title">The Voice</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="reveal">
+      <p class="voice-quote">Didn't feel like training today. Trained anyway. That's the whole system.</p>
+      <p class="voice-quote">The industry stopped talking to you at 40. The work didn't.</p>
+      <p class="voice-quote">Your fire doesn't need to be loud. It needs to stay lit.</p>
+      <p class="voice-quote">If Monday scares you, your purpose ain't big enough.</p>
+      <p class="voice-quote">In the space between what happens and what you choose to do next — that's where your power lives.</p>
+    </div>
+  </section>
+
+  <!-- About / Origin -->
+  <section class="about" id="about">
+    <div class="section-header reveal">
+      <span class="section-label">How It Started</span>
+      <h2 class="section-title">The Origin</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <p class="about-intro reveal">Before it was a brand, it was a conversation. Two friends looking for a mantra — something short enough to carry, strong enough to live by. Not a sentence. Not a slogan. Just one word that said everything. A reminder that no matter where you are in life, the goal is simple: be 1% better today than you were yesterday. Keep moving. OLDMANSTILLCAN.</p>
+
+    <div class="about-grid reveal">
+      <div class="about-card">
+        <h3 class="about-card-title">Maximus Peregrine</h3>
+        <p>Not a fictional character. The name Rob writes under publicly. The philosophy is real. The experience is real.</p>
+        <ul style="margin-top: 0.75rem;">
+          <li>Maximus — greatness and strength</li>
+          <li>Peregrine — the traveler, lifelong journey</li>
+          <li>OG StillCan. The Elder Flame.</li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <h3 class="about-card-title">The Audience</h3>
+        <p>Not limited to any age. OMSC is a reminder to keep moving — at any stage, in any direction. Still training, competing, learning, building.</p>
+        <p style="margin-top: 0.75rem;">Moving water breeds life. Stagnant water decays. That's the whole philosophy.</p>
+      </div>
+    </div>
+
+    <div class="origin-block reveal">
+      <p><strong>The contrast that started it:</strong> Rob's father stopped moving after his mother passed. TV, stillness, rapid decline. Rob's mother-in-law stayed active, stayed in the world. Two people. Two choices. The difference wasn't genetics — it was whether they kept moving.</p>
+    </div>
+
+    <div class="origin-block reveal">
+      <p><strong>Kawika Bennett</strong> — Rob's closest friend. "Brother from another mother." Passed November 9, 2023, three days after his 49th birthday.</p>
+      <p>Their shared conclusion: "Stoicism is the best path. We cannot control others — we can control ourselves, so that we can be the best we can be regardless of the situation."</p>
+    </div>
+
+    <div class="origin-block reveal">
+      <p><strong>Cultural roots:</strong> Punk (Descendents, Misfits). Filipino Martial Arts. Stoicism (Marcus Aurelius, Epictetus, Seneca). Dog Brothers martial arts. "Walk as a warrior for all your days."</p>
+    </div>
+
+    <p class="origin-note reveal">The name stays. The name is the flag. The message is universal.</p>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="philosophy" id="philosophy">
+    <div class="section-header reveal">
+      <span class="section-label">The System</span>
+      <h2 class="section-title">The Philosophy</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <!-- W.A.R. & G.R.I.T. side by side -->
+    <div class="philosophy-grid">
+      <div class="framework-block reveal">
+        <h3 class="framework-name">W.A.R.</h3>
+        <p class="framework-sub">Willpower &middot; Action &middot; Resilience</p>
+        <p class="framework-desc">The internal battle fought daily. Not a metaphor — the actual war. The one inside your head before you get up, before you train, before you show up when you don't want to.</p>
+        <table class="framework-table">
+          <tr><th>Letter</th><th>Meaning</th></tr>
+          <tr><td>W</td><td>Willpower — The decision to act before you feel ready.</td></tr>
+          <tr><td>A</td><td>Action — Movement is the answer. Life is movement.</td></tr>
+          <tr><td>R</td><td>Resilience — You don't just survive it — you keep fighting.</td></tr>
+        </table>
+      </div>
+
+      <div class="framework-block reveal">
+        <h3 class="framework-name">G.R.I.T.</h3>
+        <p class="framework-sub">Guts &middot; Resilience &middot; Integrity &middot; Tenacity</p>
+        <p class="framework-desc">The long game. Where W.A.R. is the daily internal battle, G.R.I.T. is the character that emerges from fighting it consistently.</p>
+        <table class="framework-table">
+          <tr><th>Letter</th><th>Meaning</th></tr>
+          <tr><td>G</td><td>Guts — The courage to show up when it's hard.</td></tr>
+          <tr><td>R</td><td>Resilience — You don't just survive it — you build from it.</td></tr>
+          <tr><td>I</td><td>Integrity — Do it right when nobody's watching.</td></tr>
+          <tr><td>T</td><td>Tenacity — Keep going after grit alone isn't enough.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <p class="philosophy-pullquote reveal">"In the space between what happens and what you choose to do next — that's where your power lives. In that gap you become unshakable."</p>
+
+    <!-- Four Laws -->
+    <div class="laws-section reveal">
+      <h3 class="laws-title">The Four Laws of Self-Belief</h3>
+
+      <div class="laws-grid">
+        <div class="law-block">
+          <p class="law-number">Law 1</p>
+          <h4 class="law-title">Own the Voice in Your Head</h4>
+          <p class="law-desc">Self-leadership, not self-bullying. The goal is not to flatter or shame yourself. The goal is to build inner stability.</p>
+        </div>
+
+        <div class="law-block">
+          <p class="law-number">Law 2</p>
+          <h4 class="law-title">Choose Your Standards, Then Commit</h4>
+          <p class="law-desc">Self-belief is not born from praise. It is born from consistency. Choose your values deliberately — then return to them, especially when you fall short.</p>
+        </div>
+
+        <div class="law-block">
+          <p class="law-number">Law 3</p>
+          <h4 class="law-title">Stand Alone When Required</h4>
+          <p class="law-desc">There will be moments when you must act without support, continue without agreement, stay committed without applause.</p>
+        </div>
+
+        <div class="law-block">
+          <p class="law-number">Law 4</p>
+          <h4 class="law-title">Respect the Cycle of Effort</h4>
+          <p class="law-desc">Progress is built through rhythm. Effort repeated. Repetition forming habits. Habits shaping direction. The rhythm matters more than the volume.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Systems + Trinity side by side -->
+    <div class="philosophy-bottom reveal">
+      <div class="framework-block">
+        <h3 class="framework-name">Systems Over Goals</h3>
+        <p class="framework-desc">A goal is the moon in the sky. A system is the path beneath your feet. Emotions cannot be trusted. Energy cannot be trusted. Motivation cannot be trusted. The only thing you can trust is structure.</p>
+        <p class="framework-desc" style="color: var(--omsc-blood); font-style: italic; margin-bottom: 0;">Your system is not measured by how many perfect days you have. It is measured by how quickly you return after missing one.</p>
+      </div>
+
+      <div class="framework-block">
+        <h3 class="framework-name">Health as Trinity</h3>
+        <p class="framework-desc">Body, mind, and heart. What we cultivate in our hearts and minds shapes our physical reality. Inner peace leads to outer strength. Unresolved internal struggles will always erode physical wellness.</p>
+      </div>
+    </div>
+
+    <div class="philosophy-closer reveal">
+      <p class="philosophy-pullquote" style="margin-bottom: 0;">"A gem cannot be polished without friction, nor a man perfected without trials."</p>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products" id="products">
+    <div class="section-header reveal">
+      <span class="section-label">What We Make</span>
+      <h2 class="section-title">The Build</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="products-grid reveal">
+      <div class="product-card">
+        <div class="product-icon">&spades;</div>
+        <h3 class="product-name">AOK T-Shirts</h3>
+        <p class="product-desc">FMA, Polynesian, Crypto, OMSC, Combat Sports apparel.</p>
+        <span class="product-status status-live">Live on Etsy</span>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">&hearts;</div>
+        <h3 class="product-name">Train For Life</h3>
+        <p class="product-desc">iOS health and readiness tracking. The OMSC system as a product.</p>
+        <span class="product-status status-building">In Development</span>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">&diams;</div>
+        <h3 class="product-name">Lifestyle Goods</h3>
+        <p class="product-desc">Gift boxes. Laser-etched whiskey glasses. G.R.I.T. card deck. Journal boxes.</p>
+        <span class="product-status status-building">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="franchise-block reveal">
+      <h3 class="franchise-title">"Am I Too Old To..."</h3>
+      <p class="franchise-desc">The recurring video franchise. Rob lives the answer. AI, guitar, skateboard, weight training, business, coding — every episode is proof that the commandments work.</p>
+    </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  <section class="cta reveal">
     <a class="cta-link" href="https://twitter.com/oldmanstillcan" target="_blank" rel="noopener noreferrer">
       Follow @oldmanstillcan
     </a>
@@ -362,14 +1281,93 @@
   </section>
 
   <!-- Footer -->
-  <section class="footer">
-    <p class="signoff">Stay in Mosciun.</p>
+  <footer class="footer">
+    <div class="footer-brand">OLDMAN<span>STILL</span>CAN</div>
+    <p class="signoff">Stay in Motion.</p>
     <p class="footer-links">
       <a href="https://oldmanstillcan.com">oldmanstillcan.com</a> &nbsp;&middot;&nbsp;
       <a href="https://aoktshirts.com">AOK T-Shirts</a> &nbsp;&middot;&nbsp;
       <a href="https://taoerwreckords.com">Taoer Wreckords</a>
     </p>
-  </section>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    (function() {
+      // ── Rotating Quotes ──
+      var quotes = [
+        "Didn't feel like training today. Trained anyway. That's the whole system.",
+        "The industry stopped talking to you at 40. The work didn't.",
+        "Your fire doesn't need to be loud. It needs to stay lit.",
+        "If Monday scares you, your purpose ain't big enough.",
+        "In the space between what happens and what you choose to do next \u2014 that's where your power lives.",
+        "Everyone is asking if AI will take their job. I'm asking what I can build with it today.",
+        "Maximus isn't chasing youth. He's chasing truth. And truth don't age.",
+        "Old? Maybe. Done? Never.",
+        "The train doesn't run because it feels like it. The rails are the structure. It keeps moving.",
+        "You're not broken. You've been tested. Forged steel bears the marks of fire.",
+        "Self-recognition, not self-promotion. No one defines me but me.",
+        "The strength comes from endurance, not bravado. Almost tired, but steady.",
+        "Old Man Still CAN. Not 'I used to could.'",
+        "Comfort hides flaws. Pressure reveals structure.",
+        "The reps don't get easier. You get stronger.",
+        "Endurance isn't loud. It's built in silence, shown in results.",
+        "Recovery isn't a pause; it's part of the system.",
+        "The week doesn't need motivation. It needs movement.",
+        "Strength is built by what you don't carry into tomorrow.",
+        "Mental stillness is the fastest way to fall behind.",
+        "You're not weak. You're worn. There's a difference. Rest is allowed. Giving up isn't.",
+        "Fear means you're alive. Doubt means you're thinking. Keep moving.",
+        "I don't fight because I have to. I fight because I still can.",
+        "A gem cannot be polished without friction, nor a man perfected without trials.",
+        "Welcome back to the path. This walk isn't for the perfect. It's for the persistent."
+      ];
+      var el = document.getElementById('rotating-quote');
+      var i = 0;
+
+      function next() {
+        el.classList.add('fade-out');
+        setTimeout(function() {
+          i = (i + 1) % quotes.length;
+          el.textContent = quotes[i];
+          el.classList.remove('fade-out');
+        }, 600);
+      }
+
+      setInterval(next, 6000);
+
+      // ── Scroll Reveal ──
+      var reveals = document.querySelectorAll('.reveal');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
+
+      // ── Nav shrink on scroll ──
+      var nav = document.getElementById('nav');
+      var lastScroll = 0;
+      window.addEventListener('scroll', function() {
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if (y > 80) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        lastScroll = y;
+      }, { passive: true });
+    })();
+  </script>
 
 </body>
 </html>
